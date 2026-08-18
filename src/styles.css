@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+     font-family: 'Poppins', sans-serif;
+     background-color: #F5F0FF ; 
+     display: flex;
+     flex-direction: column;
+}
+
+router-outlet{
+      flex: 2 ; 
+}
+
+.container {
+     margin-left: 5%;
+     margin-right: 5%;
+}
+
+.common-form {
+     text-align: center;
+     display: flex;
+     margin: auto;
+     flex-direction: column;
+     width: 300px;
+     row-gap: 20px;
+}
+
+.validation{
+    color: red;
+    font-size: 13px;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.form-input {
+
+     height: 40px;
+     padding-left: 10px;
+     border: 1.5px solid #312E81;
+     color: #1F2937;
+     font-size: 18px;
+
+}
+
+.common-form button {
+     cursor: pointer;
+}
+
+.common-form button:hover {
+    background-color: rgba(122, 122, 214, 0.837);
+}
+
+.common-form button:disabled {
+    cursor: not-allowed;
+}
+
+
+
+.msg{
+     color:  #1F2937 ; 
+      text-align: center;
+}  
+
+   
+
+  /* user home page */
+.picsum-img-wrapper{
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 420px;
+    background-color: #f8f8f8;
+}
+
+.carousel-caption{
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 10px;
+    bottom: 20px;
+}
+
+.carousel-caption h3{
+    color: white;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.carousel-caption p{
+     color: #f1f1f1;
+    font-size: 16px;
+}
+
+::ng-deep .carousel-control-prev,
+::ng-deep .carousel-control-next{
+    width: 6%;
+}
+
+::ng-deep .carousel-indicators{
+    margin-bottom: 5px;
+}

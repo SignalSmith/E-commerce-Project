@@ -1,0 +1,33 @@
+.signup,
+.login {
+       text-align: center;
+       color: #312E81;
+       margin-bottom: 50px;
+       margin-top: 80px;
+}
+
+.signup h1,
+.login h1 {
+       margin-bottom: 75px;
+}
+
+.user p {
+       color: red;
+       font-size: 14px;
+}
+
+
+.link {
+       font-size: 14px;
+       color: blue;
+       cursor: pointer;
+
+}
+
+.user-login p {
+       color: red;
+       font-size: 14px;
+}
+
+
+

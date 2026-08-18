@@ -1,0 +1,131 @@
+.product-details {
+ background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  padding: 30px;
+  display: flex;
+  align-items: center;
+}
+
+/* LEFT SIDE IMAGE */
+.product-image {
+  width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  background: #fafafa;
+  padding: 30px;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+} 
+ .product-image:hover {
+  transform: scale(1.03);
+}
+
+/* RIGHT SIDE */
+.details {
+  padding-left: 20px;
+}
+
+/* TITLE */
+.details h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+/* PRICE */
+.details h3 {
+  color: #ff3e6c;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* CATEGORY */
+.details h6 {
+  margin-top: 10px;
+  color: #777;
+  font-size: 15px;
+}
+
+/* COLOR SECTION */
+.product-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0;           /* IMPORTANT */
+  display: inline-block;
+  border: 1px solid black; 
+}
+
+/* BUTTONS */
+button {
+  margin-right: 12px;
+  margin-top: 18px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* BUY NOW */
+button:nth-of-type(1) {
+  background: #ff5722;
+  color: white;
+}
+
+button:nth-of-type(1):hover {
+  background: #e64a19;
+  transform: scale(1.05);
+}
+
+/* ADD TO CART */
+button:nth-of-type(2) {
+  background: #1976d2;
+  color: white;
+}
+
+button:nth-of-type(2):hover {
+  background: #0d47a1;
+  transform: scale(1.05);
+}
+
+/* QUANTITY BOX */
+.quantity {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+ 
+}
+
+.quantity button {
+  background: #eee;
+  color: #333;
+  /* padding: 8px 14px; */
+  font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-right: 0;
+}
+
+.quantity button:hover {
+  background: #ddd;
+}
+
+.color-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity input {
+      width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    outline: none;
+    height: 45px;
+    margin-top: 15px;
+}
+

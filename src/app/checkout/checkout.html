@@ -1,0 +1,377 @@
+<div class="checkout-page">
+
+  <h1>Checkout</h1>
+
+  <form #orderData="ngForm" (ngSubmit)="orderNow(orderData.value)">
+
+    <div class="checkout-container">
+
+      <!-- ================= LEFT SIDE ================= -->
+      <div class="checkout-left">
+
+        <!-- DELIVERY ADDRESS -->
+        <div class="checkout-card">
+
+          <h2>Delivery Address</h2>
+
+          <div class="form-row">
+
+            <div class="form-group">
+              <label>First Name</label>
+
+              <input
+                type="text"
+                name="firstName"
+                ngModel
+                required
+                placeholder="Enter first name"
+              >
+            </div>
+
+            <div class="form-group">
+              <label>Last Name</label>
+
+              <input
+                type="text"
+                name="lastName"
+                ngModel
+                required
+                placeholder="Enter last name"
+              >
+            </div>
+
+          </div>
+
+
+          <!-- PHONE -->
+          <div class="form-group">
+
+            <label>Phone Number</label>
+
+            <input
+              type="tel"
+              name="phone"
+              ngModel
+              required
+              minlength="10"
+              maxlength="10"
+              pattern="[0-9]{10}"
+              placeholder="Enter phone number"
+            >
+
+          </div>
+
+
+          <!-- EMAIL -->
+          <div class="form-group">
+
+            <label>Email</label>
+
+            <input
+              type="email"
+              name="email"
+              ngModel
+              required
+              placeholder="Enter email address"
+            >
+
+          </div>
+
+
+          <!-- ADDRESS -->
+          <div class="form-group">
+
+            <label>Address</label>
+
+            <textarea
+              name="address"
+              ngModel
+              required
+              placeholder="House No, Street, Area"
+            ></textarea>
+
+          </div>
+
+
+          <!-- CITY + STATE -->
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label>City</label>
+
+              <input
+                type="text"
+                name="city"
+                ngModel
+                required
+                placeholder="Enter city"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>State</label>
+
+              <input
+                type="text"
+                name="state"
+                ngModel
+                required
+                placeholder="Enter state"
+              >
+
+            </div>
+
+          </div>
+
+
+          <!-- PIN + COUNTRY -->
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label>PIN Code</label>
+
+              <input
+                type="text"
+                name="pincode"
+                ngModel
+                required
+                minlength="6"
+                maxlength="6"
+                pattern="[0-9]{6}"
+                placeholder="Enter PIN code"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>Country</label>
+
+              <input
+                type="text"
+                name="country"
+                ngModel
+                required
+                value="India"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ================= PAYMENT ================= -->
+
+        <div class="checkout-card">
+
+          <h2>Payment Method</h2>
+
+
+          <!-- COD -->
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="cod"
+              ngModel
+              required
+            >
+
+            <div>
+              <strong>Cash on Delivery</strong>
+              <p>Pay when your order arrives.</p>
+            </div>
+
+          </label>
+
+
+          <!-- UPI -->
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="upi"
+              ngModel
+            >
+
+            <div>
+              <strong>UPI</strong>
+              <p>Pay using Google Pay, PhonePe or Paytm.</p>
+            </div>
+
+          </label>
+
+
+          <!-- CARD -->
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="card"
+              ngModel
+            >
+
+            <div>
+              <strong>Credit / Debit Card</strong>
+              <p>Pay securely using your card.</p>
+            </div>
+
+          </label>
+
+        </div>
+
+
+        <!-- ================= PLACE ORDER ================= -->
+
+        <button
+          type="submit"
+          class="place-order-btn"
+          [disabled]="orderData.invalid || cartData.length === 0"
+        >
+          Place Order
+        </button>
+
+      </div>
+
+
+      <!-- ================= RIGHT SIDE ================= -->
+
+      <div class="checkout-right">
+
+        <div class="summary-card">
+
+          <h2>Order Summary</h2>
+
+
+          <!-- CART PRODUCTS -->
+
+          <div
+            class="product-item"
+            *ngFor="let item of cartData"
+          >
+
+            <img
+              [src]="item.image"
+              [alt]="item.name"
+            >
+
+            <div class="product-info">
+
+              <h3>{{ item.name }}</h3>
+
+              <p>
+                Quantity:
+                {{ item.quantity }}
+              </p>
+
+              <span>
+                ₹{{ item.price }}
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- EMPTY CART -->
+
+          <div
+            class="empty-cart"
+            *ngIf="cartData.length === 0"
+          >
+
+            <p>Your cart is empty.</p>
+
+          </div>
+
+
+          <!-- ================= PRICE SUMMARY ================= -->
+
+          <div class="summary-line">
+
+            <span>Amount</span>
+
+            <span>
+              ₹{{ prices.price }}
+            </span>
+
+          </div>
+
+
+          <div class="summary-line">
+
+            <span>Tax</span>
+
+            <span>
+              ₹{{ prices.tax }}
+            </span>
+
+          </div>
+
+
+          <div class="summary-line">
+
+            <span>Delivery</span>
+
+            <span>
+              ₹{{ prices.delivery }}
+            </span>
+
+          </div>
+
+
+          <div class="summary-line discount">
+
+            <span>Discount</span>
+
+            <span>
+              -₹{{ prices.discount }}
+            </span>
+
+          </div>
+
+
+          <div class="divider"></div>
+
+
+          <!-- TOTAL -->
+
+          <div class="total-line">
+
+            <strong>Total</strong>
+
+            <strong>
+              ₹{{ totalPrice }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- SECURITY -->
+
+        <div class="secure-box">
+
+          🔒 Your payment information is secure.
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
+
+</div>

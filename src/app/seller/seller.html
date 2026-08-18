@@ -1,0 +1,55 @@
+<div *ngIf="!showLogin" class="seller">
+
+     <div  class="signup">
+        <h1>Seller Sign-up</h1>
+     
+     <form  #sellerSignUp="ngForm" class="common-form"   (ngSubmit)="signUp(sellerSignUp.value)">
+
+        <input class="form-input" type="text" placeholder="Enter Name"    ngModel    name="name" 
+           pattern="^[a-zA-Z ]+$" minlength="3" maxlength="20"    #name="ngModel" required/>
+         
+               <p class="validation"><span *ngIf="name.invalid && name.touched">*Enter a valid name</span></p>
+
+        <input  class="form-input" type="password" placeholder="Enter Password"   ngModel   name="password"
+            minlength="3" maxlength="20" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{6,}$"    #password="ngModel" required />
+
+                <p class="validation"><span *ngIf="password.invalid && password.touched">*Enter a valid password</span></p>
+
+
+        <input  class="form-input" type="text" placeholder="Enter Email Id"   ngModel    name="email"
+              email  #email="ngModel" required />
+
+                 <p class="validation"><span *ngIf="email.invalid && email.touched">*Enter a valid email</span></p>
+
+
+        <button [disabled]="sellerSignUp.invalid" class="form-input">Signup</button>
+        <a class = "link" (click) ="openLogin()">Already have an account? Click here to Login</a>
+     </form>
+     </div>
+</div>
+
+ <!-- seller login form -->
+
+ <div *ngIf="showLogin" class="seller">
+     <div  class="login">
+        <h1>Seller Login</h1>
+         <p>{{loginError}}</p>
+     <form #sellerLogin="ngForm" class="common-form"   (ngSubmit)="Login(sellerLogin.value)">
+      
+        <input  class="form-input" type="text" placeholder="Enter Email Id"   ngModel    name="email"
+                email  #email="ngModel" required />
+
+         <p class="validation"><span *ngIf="email.invalid && email.touched">*Enter a valid email</span></p>
+
+        <input  class="form-input" type="password" placeholder="Enter Password"   ngModel   name="password"
+                minlength="3" maxlength="20"    #password="ngModel" required/>
+    
+          <p class="validation"><span *ngIf="password.invalid && password.touched">*Enter a valid password</span></p>
+
+        <button [disabled]="sellerLogin.invalid" class="form-input">Login</button>
+
+
+        <a class = "link" (click) ="openSignup()">Don't have account ? click to Signup</a>
+     </form>
+     </div>
+</div>

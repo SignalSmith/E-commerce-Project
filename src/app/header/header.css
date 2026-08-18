@@ -1,0 +1,83 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+ 
+ .logo{
+     color: #312E81;
+     text-decoration: none;
+      font-weight: bold;
+ }
+.navbar h1 {
+   
+    margin: 0;
+    font-size: 40px;
+    margin-top: 5px;
+}
+
+.navbar ul {
+    display: inline-flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: #8B5CF6;
+}
+
+.navbar .search input{
+     flex: 1;
+     height:35px; 
+     border: 1px solid #8B5CF6;
+     border-right: 0px;
+}
+
+.navbar .search button{
+   
+     height:35px; 
+     border: 1px solid #8B5CF6;
+   
+}
+
+.search{
+     display: flex;
+     margin-top: 10px;
+     flex: 1;
+     margin-right: 50px;
+     margin-left: 50px;
+}
+
+.search-list{
+    position: absolute;
+    width : 695px; 
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    background-color: #fff;
+    width : 340 px; 
+    top:58px ; 
+    border : 1px solid #ddd ;
+   
+}
+
+.search-list li {
+     border: 1px solid #fff;
+     padding: 5px;
+}
+
+.search-list li a{
+     border: 1px solid #fff;
+     padding: 5px;
+     cursor: pointer;
+}
+
+.navbar li a:hover{
+      color: #312E81;
+}

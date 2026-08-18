@@ -1,0 +1,152 @@
+<div class="orders-page">
+
+  <!-- TITLE -->
+  <div class="orders-title">
+
+    <h1>My Orders</h1>
+
+    <p>
+      Track and manage your recent orders
+    </p>
+
+  </div>
+
+
+  <!-- ONE CARD = ONE COMPLETE ORDER -->
+  <div
+    class="order-card"
+    *ngFor="let order of orderGroups"
+  >
+
+    <!-- ORDER HEADER -->
+    <div class="order-top">
+
+      <!-- ORDER ID -->
+      <div>
+
+        <p class="order-label">
+          ORDER ID
+        </p>
+
+        <h3>
+          {{ order.orderGroupId }}
+        </h3>
+
+      </div>
+
+
+      <!-- ORDER DATE -->
+      <div class="order-date">
+
+        <p class="order-label">
+          ORDER DATE
+        </p>
+
+        <p>
+          {{ order.date | date:'dd MMMM yyyy' }}
+        </p>
+
+      </div>
+
+
+      <!-- STATUS -->
+      <span class="status pending">
+        Order Placed
+      </span>
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+    <!-- Multiple products can belong to this ONE order -->
+    <div
+      class="order-product"
+      *ngFor="let item of order.products"
+    >
+
+      <!-- IMAGE -->
+      <div class="product-image">
+
+        <img
+          [src]="item.image"
+          [alt]="item.productName || 'Product'"
+        >
+
+      </div>
+
+
+      <!-- PRODUCT DETAILS -->
+      <div class="product-details">
+
+        <h2>
+          {{ item.productName }}
+        </h2>
+
+        <p class="description">
+          {{ item.description }}
+        </p>
+
+        <p>
+          Quantity:
+          <strong>
+            {{ item.quantity }}
+          </strong>
+        </p>
+
+        <h3>
+          ₹{{ item.price }}
+        </h3>
+
+      </div>
+
+    </div>
+
+
+    <!-- ORDER BOTTOM -->
+    <div class="order-bottom">
+
+      <!-- TOTAL -->
+      <div>
+
+        <span>
+          Total Amount
+        </span>
+
+        <strong>
+          ₹{{ order.totalPrice }}
+        </strong>
+
+      </div>
+
+
+      <!-- CANCEL -->
+      <button
+        class="cancel-btn"
+        type="button"
+        (click)="cancelOrder(order.orderGroupId)"
+      >
+        Cancel Order
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- NO ORDERS -->
+  <div
+    class="no-orders"
+    *ngIf="orderGroups.length === 0"
+  >
+
+    <h2>
+      No Orders Found
+    </h2>
+
+    <p>
+      You haven't placed any orders yet.
+    </p>
+
+  </div>
+
+</div>

@@ -1,0 +1,95 @@
+<div class="cart-page">
+
+    <h1>Cart Page</h1>
+
+    <div class="row">
+
+        <!-- LEFT SIDE : CART PRODUCTS -->
+        <div class="col-sm-8 details">
+
+            <div class="cart-item" *ngFor="let cart of cartData">
+
+                <!-- Product Image -->
+                <div class="cart-image">
+                    <img [src]="cart.image" [alt]="cart.name">
+                </div>
+
+                <!-- Product Details -->
+                <div class="cart-info">
+
+                    <h3>{{ cart.name }}</h3>
+
+                    <p>
+                        <strong>Price:</strong>
+                        {{ cart.price }}
+                    </p>
+
+                    <p>
+                        <strong>Quantity:</strong>
+                        {{ cart.quantity }}
+                    </p>
+
+                    <button class="common-form button" (click)="removeFromCart(cart)">
+                        Remove from cart
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Show when cart is empty -->
+            <div *ngIf="cartData.length === 0" class="empty-cart">
+                <h2>Your cart is empty</h2>
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE : SUMMARY -->
+        <div class="col-sm-4 summary">
+
+            <h3>Summary</h3>
+
+            <ul>
+
+                <li>
+                    <span>Amount</span>
+                    <span>{{prices.price}}</span>
+                </li>
+
+                <li>
+                    <span>Tax</span>
+                    <span>{{prices.tax}}</span>
+                </li>
+
+                <li>
+                    <span>Delivery</span>
+                    <span>{{prices.delivery}}</span>
+                </li>
+
+                <li>
+                    <span>Discount</span>
+                    <span>{{prices.discount}}</span>
+                </li>
+
+                <li>
+                    <span>
+                        <h4>Total</h4>
+                    </span>
+
+                    <span>
+                        <h4>{{prices.total}}</h4>
+                    </span>
+                </li>
+
+            </ul>
+
+            <button class="checkout-btn" (click)="checkout()">
+                Proceed to Checkout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
