@@ -1,36 +1,48 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Login, signUp } from '../data-type';
 import { HttpClient } from '@angular/common/http';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+
   LoggedInError = new EventEmitter<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) { }
 
   userSignUp(data: signUp) {
-    this.http.post("http://localhost:3000/user", data, { observe: 'response' }).subscribe((result) => {
+
+    this.http.post(
+      'https://e-commerce-backend-ub3j.onrender.com/user',
+      data,
+      { observe: 'response' }
+    ).subscribe((result) => {
+
       console.warn(result);
+
       if (result) {
         localStorage.setItem("user", JSON.stringify(result.body));
         this.router.navigate(['/']);
       }
-    })
+
+    });
   }
 
-  userAuthReload() {         //this function is for blocking to directly acces the page from search bar of chrome
-    // jokhon already signup then directly amra logout na press korei direct abr sugnup korar page e jete pari na it is illogical
+  userAuthReload() {
+    // This function prevents a logged-in user
+    // from directly accessing the signup/login page.
+
     if (localStorage.getItem('user')) {
       this.router.navigate(['/']);
     }
   }
 
   userLogin(data: Login) {
+
     this.http.get<signUp[]>(
-      `http://localhost:3000/user?email=${data.email}&password=${data.password}`,
+      `https://e-commerce-backend-ub3j.onrender.com/user?email=${data.email}&password=${data.password}`,
       { observe: 'response' }
     ).subscribe((result) => {
 
@@ -43,15 +55,14 @@ export class UserService {
 
         this.router.navigate(['/']);
 
-      }
-      else {
+      } else {
 
         console.warn("Login failed!");
 
         this.LoggedInError.emit(true);
       }
+
     });
   }
-
 
 }

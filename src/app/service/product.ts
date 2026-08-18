@@ -7,6 +7,8 @@ import { cart, checkoutData, productType } from '../data-type';
 })
 export class Product {
 
+   private apiUrl = 'https://e-commerce-backend-ub3j.onrender.com';
+
   cart = new EventEmitter<cart[] | []>();
   cartData = new EventEmitter<cart[]>();
   constructor(private http: HttpClient) { }
@@ -14,36 +16,36 @@ export class Product {
 
   // theese all are for API calling
   addProduct(data: productType) {
-    return this.http.post('http://localhost:3000/product', data);
+    return this.http.post('https://e-commerce-backend-ub3j.onrender.com/product', data);
   }
 
   productList() {
-    return this.http.get<productType[]>('http://localhost:3000/product');
+    return this.http.get<productType[]>('https://e-commerce-backend-ub3j.onrender.com/product');
   }
 
   deleteProduct(id: string) {
-    return this.http.delete(`http://localhost:3000/product/${id}`);
+    return this.http.delete(`https://e-commerce-backend-ub3j.onrender.com/product/${id}`);
   }
 
   getProduct(id: string) {
-    return this.http.get<productType>(`http://localhost:3000/product/${id}`);
+    return this.http.get<productType>(`https://e-commerce-backend-ub3j.onrender.com/product/${id}`);
   }
 
   updateProduct(product: productType) {
-    return this.http.put<productType>(`http://localhost:3000/product/${product.id}`, product);
+    return this.http.put<productType>(`https://e-commerce-backend-ub3j.onrender.com/product/${product.id}`, product);
   }
 
   popularProducts() {
-    return this.http.get<any>('http://localhost:3000/product?_page=1&_per_page=3');
+    return this.http.get<any>('https://e-commerce-backend-ub3j.onrender.com/product?_page=1&_per_page=3');
   }
 
   trendyProducts() {
-    return this.http.get<any>('http://localhost:3000/product?_page=1&_per_page=7');
+    return this.http.get<any>('https://e-commerce-backend-ub3j.onrender.com/product?_page=1&_per_page=7');
   }
 
 
   searchProduct() {
-    return this.http.get<any>('http://localhost:3000/product');
+    return this.http.get<any>('https://e-commerce-backend-ub3j.onrender.com/product');
   }
 
 
@@ -77,7 +79,7 @@ export class Product {
 
     // First find the cart item from DB
     this.http.get<cart[]>(
-      `http://localhost:3000/cart?userId=${userId}&productId=${productId}`
+      `https://e-commerce-backend-ub3j.onrender.com/cart?userId=${userId}&productId=${productId}`
     ).subscribe((result) => {
 
       console.log("Cart item from DB:", result);
@@ -103,16 +105,16 @@ export class Product {
   }
 
   addToCart(cartData: cart) {
-    return this.http.post('http://localhost:3000/cart', cartData);
+    return this.http.post('https://e-commerce-backend-ub3j.onrender.com/cart', cartData);
   }
 
   removeCartFromDB(id: string) {
-    return this.http.delete(`http://localhost:3000/cart/${id}`);
+    return this.http.delete(`https://e-commerce-backend-ub3j.onrender.com/cart/${id}`);
   }
 
   getcartList(userId: string) {
     return this.http.get<cart[]>(
-      `http://localhost:3000/cart?userId=${userId}`
+      `https://e-commerce-backend-ub3j.onrender.com/cart?userId=${userId}`
     ).subscribe((result) => {
 
       localStorage.setItem('localCart', JSON.stringify(result));
@@ -125,7 +127,7 @@ export class Product {
   checkProductInCart(userId: string, productId: string) {
 
     return this.http.get<cart[]>(
-      `http://localhost:3000/cart?userId=${userId}&productId=${productId}`
+      `https://e-commerce-backend-ub3j.onrender.com/cart?userId=${userId}&productId=${productId}`
     );
 
   }
@@ -134,25 +136,25 @@ export class Product {
   currentCart() {
     let userStore = localStorage.getItem('user');
     let userData = userStore && JSON.parse(userStore);
-    return this.http.get<cart[]>(`http://localhost:3000/cart?userId=${userData.id}`);
+    return this.http.get<cart[]>(`https://e-commerce-backend-ub3j.onrender.com/cart?userId=${userData.id}`);
   }
 
   orderNow(data: checkoutData) {
-    return this.http.post(`http://localhost:3000/orders`, data);
+    return this.http.post(`https://e-commerce-backend-ub3j.onrender.com/orders`, data);
   }
 
   orderList() {
     let userStore = localStorage.getItem('user');
     let userData = userStore && JSON.parse(userStore);
-    return this.http.get<checkoutData[]>(`http://localhost:3000/orders?userId=${userData.id}`);
+    return this.http.get<checkoutData[]>(`https://e-commerce-backend-ub3j.onrender.com/orders?userId=${userData.id}`);
   }
 
   deleteCartItem(id: string){
-    return this.http.delete(`http://localhost:3000/cart/${id}`);
+    return this.http.delete(`https://e-commerce-backend-ub3j.onrender.com/cart/${id}`);
      
   }
 
    cancelOrder(id: String){
-    return this.http.delete(`http://localhost:3000/orders/${id}`);
+    return this.http.delete(`https://e-commerce-backend-ub3j.onrender.com/orders/${id}`);
    }
 }

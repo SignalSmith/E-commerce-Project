@@ -1,59 +1,74 @@
 @if (productImg) {
-<ngb-carousel>
-	<ng-template *ngFor="let item of productImg" ngbSlide>
+  <ngb-carousel>
+    <ng-template *ngFor="let item of productImg" ngbSlide>
 
-		<a routerLink="/details/{{item.id}}">
-			<div class="picsum-img-wrapper">
-				<img class="product-img-size" src="{{item.image}}" alt="Random first slide" />
-			</div>
-		</a>
+      <a routerLink="/details/{{item.id}}">
+        <div class="picsum-img-wrapper">
+          <img
+            class="product-img-size"
+            [src]="item.image"
+            [alt]="item.name"
+          />
+        </div>
+      </a>
 
+      <div class="carousel-caption">
+        <h3>{{item.name}}</h3>
+        <p>{{item.description}}</p>
+      </div>
 
-		<div class="carousel-caption">
-			<h3>{{item.name}}</h3>
-			<p>{{item.description}}</p>
-		</div>
-	</ng-template>
-
-
-</ngb-carousel>
+    </ng-template>
+  </ngb-carousel>
 }
 
 <div class="product-list-wrapper">
-	<h1>Trendy products</h1>
+  <h1>Trendy products</h1>
 
-	<div class="row g-4">
+  <div class="row g-4">
 
-		<div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let item of trendyP">
+    <div
+      class="col-lg-3 col-md-4 col-sm-6"
+      *ngFor="let item of trendyP"
+    >
 
+      <div class="product-item">
 
-			<div class="product-item">
-				<a routerLink="/details/{{item.id}}">
-					<img src="{{item.image}}" />
-				</a>
+        <a routerLink="/details/{{item.id}}">
+          <img
+            [src]="item.image"
+            [alt]="item.name"
+          />
+        </a>
 
-				<div class="product-details">
-					<h6 class="name-head">{{item.name}}</h6>
-					<div class="product-price">
-						<h6>Price : {{item.price}}</h6>
-					</div>
+        <div class="product-details">
 
-					<div class="product-color">
-						<h6>Color : {{item.color}}</h6>
-					</div>
+          <h6 class="name-head">
+            {{item.name}}
+          </h6>
 
-				</div>
+          <div class="product-price">
+            <h6>Price : {{item.price}}</h6>
+          </div>
 
-				<div class="product-footer">
-					<a routerLink="/details/{{item.id}}">view details</a>
-					<button (click)="addToCart(item)">add to cart</button>
-				</div>
-			</div>
-		</div>
+          <div class="product-color">
+            <h6>Color : {{item.color}}</h6>
+          </div>
 
+        </div>
 
+        <div class="product-footer">
+          <a routerLink="/details/{{item.id}}">
+            view details
+          </a>
 
+          <button (click)="addToCart(item)">
+            add to cart
+          </button>
+        </div>
 
+      </div>
 
-	</div>
+    </div>
+
+  </div>
 </div>

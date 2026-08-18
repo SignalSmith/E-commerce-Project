@@ -1,9 +1,8 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { signUp, Login } from '../data-type';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-
 
 @Injectable({
   providedIn: 'root',
@@ -18,19 +17,25 @@ export class TheSeller {
   ///////////////////////////////////////////////////////////////////
   userSignUp(data: signUp) {
 
-    this.http.post('http://localhost:3000/seller', data, { observe: 'response' }).subscribe((result) => {
+    this.http.post(
+      'https://e-commerce-backend-ub3j.onrender.com/seller',
+      data,
+      { observe: 'response' }
+    ).subscribe((result) => {
 
       this.IsSellerLoggedIn.next(true);
 
-      localStorage.setItem('seller', JSON.stringify(result.body)); //local storage e data store holo
+      localStorage.setItem('seller', JSON.stringify(result.body));
 
-      this.router.navigate(['seller-home']);   // navigating to seller home page 
+      this.router.navigate(['seller-home']);
 
-      console.warn(result)
+      console.warn(result);
     });
   }
+
   /////////////////////////////////////////////////////////////////////
   reloadSeller() {
+
     if (localStorage.getItem('seller')) {
       this.IsSellerLoggedIn.next(true);
       this.router.navigate(['seller-home']);
@@ -40,24 +45,35 @@ export class TheSeller {
   /////////////////////////////////////////////////////////////////////
 
   userLogin(data: Login) {
+
     console.warn(data);
-    // api calling code 
-    this.http.get(`http://localhost:3000/seller?email=${data.email}&password=${data.password}`,
-      { observe: 'response' }).subscribe((result: any) => {
-        console.warn(result);
-        if (result && result.body && result.body.length) {
-          console.warn("Seller logged in successfully");
-          localStorage.setItem('seller', JSON.stringify(result.body)); //local storage e data store holo
 
-          this.router.navigate(['seller-home']);   // navigating to seller home page 
-        } else {
-          console.warn("login failed !");
-          this.IsLoggedInError.emit(true);
-        }
+    this.http.get(
+      `https://e-commerce-backend-ub3j.onrender.com/seller?email=${data.email}&password=${data.password}`,
+      { observe: 'response' }
+    ).subscribe((result: any) => {
 
+      console.warn(result);
 
-      });
+      if (result && result.body && result.body.length) {
+
+        console.warn("Seller logged in successfully");
+
+        localStorage.setItem(
+          'seller',
+          JSON.stringify(result.body)
+        );
+
+        this.router.navigate(['seller-home']);
+
+      } else {
+
+        console.warn("login failed !");
+
+        this.IsLoggedInError.emit(true);
+      }
+
+    });
   }
-
 
 }

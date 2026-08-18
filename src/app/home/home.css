@@ -1,81 +1,85 @@
-
-.product-img-size{
-    max-height: 320px;
-    width: auto;
-    object-fit: contain;
+.product-img-size {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: contain;
 }
 
 ::ng-deep .carousel-control-prev-icon,
-::ng-deep .carousel-control-next-icon{
-    background-color: black;
-    border-radius: 50%;
-    padding: 20px;
+::ng-deep .carousel-control-next-icon {
+  background-color: black;
+  border-radius: 50%;
+  padding: 20px;
 }
 
 .product-list-wrapper {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .product-list-wrapper h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
 }
 
 .product-item {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 25px;
-    transition: 0.3s;
-    background-color: #FFFFFF;
-    height: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 25px;
+  transition: 0.3s;
+  background-color: #ffffff;
+  height: 100%;
 }
 
 .product-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .product-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: contain;
-    border-radius: 8px;
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .product-details {
-    margin-top: 15px;
+  margin-top: 15px;
 }
+
 .name-head {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
-.product-price h6, .product-color h6 {
-    margin: 5px 0;
-    color: #555;
+.product-price h6,
+.product-color h6 {
+  margin: 5px 0;
+  color: #555;
 }
+
 .product-footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 
-.product-footer a, button {
-    text-decoration: none;
-    color: white;
-    background-color: #7C3AED;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: 0.3s;
+.product-footer a,
+.product-footer button {
+  text-decoration: none;
+  color: white;
+  background-color: #7c3aed;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: 0.3s;
+  border: none;
 }
 
-.product-footer a:hover {
-    background-color: #084298;
-}
+.product-footer a:hover,
 .product-footer button:hover {
-    background-color: #084298;
+  background-color: #084298;
 }
